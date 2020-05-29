@@ -1,0 +1,27 @@
+<div class="container my-3">
+  <div class="row">
+    <button mat-stroked-button color="accent" class="mr-3" (click)="goToAdd()">Új</button>
+    <button mat-stroked-button color="primary" (click)="reloadOriginalGithubUsers()">Eredeti felhasználók újratöltése</button>
+  </div>
+</div>
+<mat-table [dataSource]="githubUsers" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Név </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.login}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="image">
+    <mat-header-cell *matHeaderCellDef> Kép </mat-header-cell>
+    <mat-cell *matCellDef="let element"> 
+      <img src="{{element.avatar_url}}" alt="" style="height: 100px; width: 100px">
+        <div class="example-button-row mx-auto">
+          <button mat-raised-button class="mr-3" (click)="goToDetails(element.id)">Módosítás</button>
+          <button mat-raised-button (click)="deleteUser(element.id)">Törlés</button>
+       </div>  
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

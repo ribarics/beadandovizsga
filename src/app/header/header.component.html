@@ -1,0 +1,12 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <span>GitHub felhasználók &nbsp; - </span>
+        <a style="color: white; display: inline-block; margin: 0 5px;" routerLink="list">Home&nbsp;</a>
+        <a *ngIf="user" style="color: black" routerLink='login' (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
